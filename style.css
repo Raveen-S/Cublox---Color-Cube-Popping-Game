@@ -1,0 +1,306 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: rgb(14, 14, 14);
+    background: linear-gradient(0deg, rgb(1, 21, 29) 0%, rgb(49, 142, 204) 100%);
+    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.cube {
+    position: absolute;
+    transform-style: preserve-3d;
+    width: 100px;
+    height: 100px;
+    /* animation: rotate 2000ms infinite; */
+}
+
+.dead{
+    pointer-events: none;
+}
+
+
+
+
+
+.side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.front {
+    transform: rotateY(0deg) translateZ(100px);
+}
+
+.back {
+    transform: rotateY(180deg) translateZ(100px);
+}
+
+.top {
+    transform: rotateX(90deg) translateZ(100px);
+}
+
+.bottom {
+    transform: rotateX(-90deg) translateZ(100px);
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(100px);
+}
+
+.right {
+    transform: rotateY(90deg) translateZ(100px);
+}
+  
+
+
+.life{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    z-index: 10;
+    right: 60px;
+    top: 20px;
+    color: white;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+}
+
+.life img{
+    height: 25px;
+    padding-left: 30px;
+}
+
+.game-over-board{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 15;
+    background-color: rgba(0, 0, 0, 0.507);
+    backdrop-filter: blur(2px);
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-size: 25px;
+}
+
+.game-over-board .box{
+    border: 0px solid white ;
+    border-radius: 10px;
+    width: 300px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0px 0px 15px rgb(0, 0, 0), 0px 0px 35px rgb(0, 137, 179) ;
+}
+
+button{
+    color: white;
+    padding: 5px 20px;
+    background-color: rgba(240, 248, 255, 0);
+    border-radius: 5px;
+    transition: 250ms;
+    font-weight: bold;
+}
+button:hover{
+    color: rgb(0, 0, 0);
+    padding: 5px 20px;
+    background-color: rgb(143, 202, 253);
+    border-radius: 5px;
+    border-color: rgb(0, 0, 0);
+}
+button:active{
+    background-color: rgba(143, 202, 253, 0.425);
+}
+
+.high-score{
+    color: rgb(255, 196, 0);
+}
+
+.blackScreen{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 35px rgb(0, 0, 0);
+    visibility: hidden;
+    opacity: 1;
+    z-index: 30;
+}
+
+.menu-board{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image:linear-gradient(rgb(61, 200, 255) , rgb(0, 43, 99)) ;
+    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    display: flex;
+    flex-direction: column;
+    z-index: 25;
+    perspective: 1000px;
+}
+
+.cublox{
+    width: 600px;
+    position: absolute;
+    top: 10px;
+    left: 40px;
+    filter: drop-shadow(0px 0px 10px rgb(133, 82, 214));
+}
+
+
+.cube-pic{
+    position: absolute;
+    left: 40px;
+    bottom: -110px;
+    width: 550px;
+    filter: drop-shadow(0px 0px 10px rgb(255, 196, 0)) invert(0%) sepia(0%) saturate(100%) hue-rotate(310deg) brightness(95%) contrast(100%);
+}
+
+
+.dev{
+    pointer-events: none;
+    color: rgb(139, 139, 139);
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: bold;
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+    z-index: 28;
+}
+
+
+:root{
+    --size:120px;
+}
+
+.ints{
+    color: white;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    position: absolute;
+    top: 50px;
+    right: 10vw;
+    pointer-events: none;
+    text-shadow: 0px 0px 8px rgb(248, 37, 255);
+}
+
+
+@media (max-width: 930px) {
+    .cublox{
+        width: 300px;
+    }
+    .home-cube{
+        left: 70%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 770px) {
+    .cublox{
+        width: 200px;
+    }
+    .cube-pic{
+        visibility: hidden;
+    }
+    .home-cube{
+        left: 40%;
+    }
+}
+@media (max-width: 610px) {
+    .home-cube{
+        left: 30%;
+    }
+    .cublox{
+        width: 200px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .ints{
+        top: 50%;
+        transform: translateY(-50%);
+        right: 5px;
+        writing-mode: vertical-rl;
+    }
+}
+
+.home-cube {
+    position: absolute;
+    transform-style: preserve-3d;
+    width: var(--size);
+    height: var(--size);
+    bottom: 500px;
+    right: 15%;
+}
+
+
+.faces {
+    
+    box-shadow: 0px 0px 20px rgb(255, 255, 255);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 25px solid rgba(0, 0, 0, 0);
+  }
+  
+.s-front {
+    background-color: hsl(199, 98%, 67%);
+    /* transform: rotateY(0deg) translateZ(calc(var(--size)/2)); */
+}
+
+.s-back {
+    background-color: hsl(30, 100%, 55%);
+    /* transform: rotateY(180deg) translateZ(calc(var(--size)/2)); */
+}
+
+.s-top {
+    background-color: hsl(99, 100%, 69%);
+    /* transform: rotateX(90deg) translateZ(calc(var(--size)/2)); */
+}
+
+.s-bottom {
+    background-color: hsl(299, 100%, 73%);
+    /* transform: rotateX(-90deg) translateZ(calc(var(--size)/2)); */
+}
+
+.s-left {
+    background-color: hsl(240, 100%, 68%);
+    /* transform: rotateY(-90deg) translateZ(calc(var(--size)/2)); */
+}
+
+.s-right {
+    background-color: hsl(59, 100%, 74%);
+    /* transform: rotateY(90deg) translateZ(calc(var(--size)/2)); */
+}
